@@ -1,0 +1,47 @@
+<odoo>
+  <data>
+
+
+    <record id="school_year_view_form" model="ir.ui.view">
+      <field name="name">school.year.view.form</field>
+      <field name="model">school.year</field>
+      <field name="arch" type="xml">
+        <form string="Year">
+          <sheet>
+            <group>
+              <group>
+                <field name="year" />
+                <field name="num_of_classes" />
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="school_year_view_tree" model="ir.ui.view">
+      <field name="name">school_year.view.tree</field>
+      <field name="model">school.year</field>
+      <field name="arch" type="xml">
+        <tree string="Years">
+          <field name="year" />
+          <field name="num_of_classes" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="school_year_action" model="ir.actions.act_window">
+      <field name="name">Year</field>
+      <field name="res_model">school.year</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[]</field>
+      <field name="context">{}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Enter Years.
+        </p>
+      </field>
+    </record>
+
+  </data>
+</odoo>

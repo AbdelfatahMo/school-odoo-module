@@ -1,0 +1,50 @@
+<odoo>
+  <data>
+
+    <!-- Top menu item -->
+
+    <menuitem
+      name="School"
+      id="school.menu_root"
+      web_icon='school,static/description/icon.png'
+      sequence="-1"
+    />
+
+    <!-- menu categories -->
+
+    <menuitem
+      name="Year"
+      id="school.year"
+      action="school_year_action"
+      parent="school.menu_root"
+    />
+
+    <menuitem
+      name="Class"
+      id="school.class"
+      action="school_class_action"
+      parent="school.menu_root"
+    />
+    <menuitem
+      name="Subject"
+      id="school.subject"
+      action="school_subject_action"
+      parent="school.menu_root"
+    />
+
+    <menuitem
+      name="Student"
+      id="school.student"
+      action="school_student_action"
+      parent="school.menu_root"
+    />
+
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="school.menu_1_list" parent="school.menu_1"
+              action="school.action_window"/>
+    <menuitem name="Server to list" id="school" parent="school.menu_2"
+              action="school.action_server"/>
+-->
+  </data>
+</odoo>
