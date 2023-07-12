@@ -7,6 +7,8 @@
             <field name="model">school.student</field>
             <field name="arch" type="xml">
                 <kanban>
+                    <field name="id" />
+                    <field name="student_img" />
                     <field name="student_name" />
                     <field name="student_id" />
                     <field name="birth_date" />
@@ -19,8 +21,26 @@
                             <div class="oe_kanban_card oe_kanban_global_click">
                                 <div class="o_kanban_image mr-1">
                                     <img
-                                        t-att-src="kanban_image('school.student','image_128','record.id.raw_value')"
-                                        alt="Student Image" class="o_image_64_contain" />
+                                        t-att-src="kanban_image('school.student', 'student_img', record.id.raw_value)"
+                                        alt="Student" class="o_image_64_contain" />
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <div class="o_kanban_record_top mb-0">
+                                        <div class="o_kanban_record_headings">
+                                            <strong>
+                                                <field name="student_name" />
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div> 
+                                        ID : <field name="student_id" />
+                                        <br /> 
+                                        Age : <field name="age" />
+                                        <br /> 
+                                        Year :<field name="year" />
+                                        <br />
+                                        Class :<field name="class_id" />
+                                    </div>
                                 </div>
                             </div>
                         </t>
