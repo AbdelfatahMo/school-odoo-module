@@ -6,6 +6,7 @@ from datetime import date
 class SchoolStudent(models.Model):
     _name = "school.student"
     _description = "School Student"
+    _inherit = ["mail.thread","mail.activity.mixin"]
     _rec_name = "student_name"
 
     _sql_constraints = [
@@ -22,10 +23,13 @@ class SchoolStudent(models.Model):
     student_id = fields.Char(required=True, string="Student ID")
     birth_date = fields.Date(
         string="Birth Date", default=date(date.today().year-7, 1, 1))
-    age = fields.Integer(compute="_compute_age")
+    age = fields.Integer(compute="_compute_age" ,store=True)
     gender=fields.Selection(selection=[('male','Male'),('female','Female')],default='male')
+    
     class_id = fields.Many2one(comodel_name="school.class", string="Class",)
-
+    
+    teacher_id=fields.Many2one(comodel_name="res.users",string="Teacher")
+    
     subjects_ids = fields.One2many(
         comodel_name="school.subject", inverse_name="student_id", string="Subjects")
 

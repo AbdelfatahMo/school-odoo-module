@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+        <!-- Category -->
+        <record id="base.module_category_education_school" model="ir.module.category">
+            <field name="name">School Management</field>
+            <field name="sequence">10</field>
+        </record>
+
+        <!-- Groups -->
+        <record id="school_data_editor" model="res.groups">
+            <field name="name">School data editor</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="category_id" ref="base.module_category_education_school"/>
+        </record>
+    
+
+        <record id="school_data_manager" model="res.groups">
+            <field name="name">School Manager</field>  
+            <field name="category_id" ref="base.module_category_education_school" />
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]" />
+            <field name="users" eval="[(4,ref('base.user_root')),(4,ref('base.user_admin'))]" />
+        </record>
+
+        <!-- Roles -->
+        <record id="school_student_teacher_rule" model="ir.rule">
+            <field name="name">School Students teacher rule</field>
+            <field name="model_id" ref="model_school_student" />
+            <field name="domain_force">[('teacher_id','in', (False, user.id))]</field>
+            <field name="groups" eval="[(4,ref('school.school_data_editor'))]" />
+        </record>
+
+
+    </data>
+</odoo>

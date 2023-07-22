@@ -1,7 +1,46 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-
+        <!-- Calender View -->
+        <record id="school_student_view_calendar" model="ir.ui.view">
+            <field name="name">school_student.view.calendar</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <calendar string="Term" date_start="birth_date">
+                    <field name="student_name" />
+                    <field name="class_id" />
+                </calendar>
+            </field>
+        </record>
+        <!-- Activity View -->
+        <record id="school_student_view_activity" model="ir.ui.view">
+            <field name="name">school_student.view.activity</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <activity string="Student">
+                    <templates>
+                        <div t-name="activity-box">
+                            <div>
+                                <field name="student_name" display="full" />
+                                <field name="class_id" />
+                            </div>
+                        </div>
+                    </templates>
+                </activity>
+            </field>
+        </record>
+        <!-- Graph View -->
+        <record id="school_student_view_graph" model="ir.ui.view">
+            <field name="name">school_student.view.graph</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <graph>
+                    <field name="student_name" />
+                    <field name="year" />
+                </graph>
+            </field>
+        </record>
+        <!-- Kanban View -->
         <record id="school_student_view_kanban" model="ir.ui.view">
             <field name="name">school_student.view.kanban</field>
             <field name="model">school.student</field>
@@ -32,12 +71,10 @@
                                             </strong>
                                         </div>
                                     </div>
-                                    <div> 
-                                        ID : <field name="student_id" />
-                                        <br /> 
-                                        Age : <field name="age" />
-                                        <br /> 
-                                        Year :<field name="year" />
+                                    <div> ID : <field name="student_id" />
+                                        <br /> Age : <field
+                                            name="age" />
+                                        <br /> Year :<field name="year" />
                                         <br />
                                         Class :<field name="class_id" />
                                     </div>
@@ -48,7 +85,7 @@
                 </kanban>
             </field>
         </record>
-
+        <!-- Form View -->
         <record id="school_student_view_form" model="ir.ui.view">
             <field name="name">school.student.view.form</field>
             <field name="model">school.student</field>
@@ -70,6 +107,7 @@
                                 <field name="gender" />
                             </group>
                             <group string="Acadmic Info">
+                                <field name="teacher_id" widget="many2one_avatar_user" />
                                 <field name="class_id" />
                                 <field name="year" />
                             </group>
@@ -85,6 +123,11 @@
                             </page>
                         </notebook>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="activity_ids" widget="mail_activity" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
                 </form>
             </field>
         </record>
@@ -108,7 +151,7 @@
         <record id="school_student_action" model="ir.actions.act_window">
             <field name="name">students</field>
             <field name="res_model">school.student</field>
-            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_mode">tree,form,kanban,graph,activity,calendar</field>
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="help" type="html">

@@ -1,5 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_school_year,school.year,model_school_year,,1,1,1,1
-access_school_class,school.class,model_school_class,,1,1,1,1
-access_school_subject,school.subject,model_school_subject,,1,1,1,1
-access_school_student,school.student,model_school_student,,1,1,1,1
+access_school_year_editor,school.year,model_school_year,school_data_editor,1,0,0,0
+access_school_class_editor,school.class,model_school_class,school_data_editor,1,0,0,0
+access_school_subject_editor,school.subject,model_school_subject,school_data_editor,1,0,0,0
+access_school_student_editor,school.student,model_school_student,school_data_editor,1,1,0,0
+access_school_year,school.year,model_school_year,school_data_manager,1,1,1,1
+access_school_class,school.class,model_school_class,school_data_manager,1,1,1,1
+access_school_student,school.student,model_school_student,school_data_manager,1,1,1,1
+access_school_subject,school.subject,model_school_subject,school_data_manager,1,1,1,1
