@@ -114,12 +114,9 @@
                         </group>
                         <notebook>
                             <page name="subjects" string="Subjects">
-                                <field name="subjects_ids">
-                                    <tree create="true" delete="true"
-                                        edit="true" editable="top">
-                                        <field name="subject" />
-                                    </tree>
-                                </field>
+                                <field name="subjects_ids" widget="many2many_tags"/>
+                    
+                                
                             </page>
                         </notebook>
                     </sheet>
